@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CadastroClienteTest {
 
+    public static final int MAIOR_DE_IDADE = 18;
     private Cliente cliente;
     private CadastroCliente cadastroCliente;
 
@@ -39,15 +40,9 @@ class CadastroClienteTest {
     }
 
     @Test
-    void deveConsultarCliente() {
-        Filtro<Cliente> filtro = new Filtro<Cliente>() {
-            @Override
-            public boolean avaliar(Cliente cliente) {
-                return cliente.idade() > 18;
-            }
-        };
+    void deveConsultarClienteComIdadeAcimaDe18Anos() {
         cadastroCliente.adicionar(cliente);
-        List<Cliente> clientes = cadastroCliente.consultar(filtro);
+        List<Cliente> clientes = cadastroCliente.consultar(c -> c.idade() > MAIOR_DE_IDADE);
 
         assertTrue(cadastroCliente.getClientes().contains(cliente));
         assertEquals("ryu", clientes.get(0).nome());

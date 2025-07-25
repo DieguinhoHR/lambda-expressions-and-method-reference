@@ -2,7 +2,6 @@ package com.study.crm;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CadastroCliente {
 
@@ -22,11 +21,10 @@ public class CadastroCliente {
     public List<Cliente> consultar(Filtro<Cliente> filtro) {
         List<Cliente> clientesFiltrados = new ArrayList<>();
 
-        for (Cliente cliente : clientes) {
-            if (filtro.avaliar(cliente)) {
-                clientesFiltrados.add(cliente);
-            }
-        }
+        clientes.stream()
+                .filter(filtro::avaliar)
+                .map(clientesFiltrados::add)
+                .toList();
 
         return clientesFiltrados;
     }

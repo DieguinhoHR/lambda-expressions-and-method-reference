@@ -1,6 +1,6 @@
 package com.study.crm;
 
-//@FunctionalInterface
+@FunctionalInterface
 public interface Filtro<T> {
 
     boolean avaliar(T objeto);
