@@ -2,6 +2,7 @@ package com.study.crm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CadastroCliente {
 
@@ -12,6 +13,9 @@ public class CadastroCliente {
     }
 
     public void adicionar(Cliente cliente) {
+        if (cliente == null) {
+            throw new IllegalArgumentException();
+        }
         clientes.add(cliente);
     }
 

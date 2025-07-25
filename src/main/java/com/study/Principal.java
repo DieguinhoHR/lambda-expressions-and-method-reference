@@ -1,6 +1,5 @@
 package com.study;
 
-
 import com.study.crm.CadastroCliente;
 import com.study.crm.Cliente;
 import com.study.crm.Filtro;
@@ -20,14 +19,14 @@ public class Principal {
         Filtro<Cliente> filtro = new Filtro<Cliente>() {
             @Override
             public boolean avaliar(Cliente cliente) {
-                return cliente.getIdade() > 40;
+                return cliente.idade() > 40;
             }
         };
 
         List<Cliente> clientes = cadastroCliente.consultar(filtro);
 
         for (Cliente cliente : clientes) {
-            System.out.printf("%s - %d%n", cliente.getNome(), cliente.getIdade());
+            System.out.printf("%s - %d%n", cliente.nome(), cliente.idade());
         }
     }
 }
